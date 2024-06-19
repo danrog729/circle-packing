@@ -30,6 +30,7 @@ def in_circle(circle, point):
         return False
 
 def min_bounding_circle(points, begin, end, usePin1, usePin2, pin1, pin2):
+    # uses this algorithm https://youtu.be/HojzdCICjmQ?si=wuTMoSPXpYmu_-JG
     current = begin
     circle = ((0,0),0)
     if (usePin1 and usePin2):
@@ -71,6 +72,7 @@ def min_bounding_circle(points, begin, end, usePin1, usePin2, pin1, pin2):
     return circle
 
 def calculate_bounding_circle(points):
+    # uses this algorithm https://youtu.be/HojzdCICjmQ?si=wuTMoSPXpYmu_-JG
     centre = (0,0)
     radius = 0
 
