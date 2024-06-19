@@ -34,39 +34,39 @@ def min_bounding_circle(points, begin, end, usePin1, usePin2, pin1, pin2):
     circle = ((0,0),0)
     if (usePin1 and usePin2):
         circle = create_from_diameter(points[pin1], points[pin2])
-        print("NEW CIRCLE FROM DIAMETER, USING PIN 1 AND 2: PIN 1 = " + str(pin1) + ", PIN 2 = " + str(pin2))
-        print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-        print("DIAMETER = " + str(circle[1]))
+        # print("NEW CIRCLE FROM DIAMETER, USING PIN 1 AND 2: PIN 1 = " + str(pin1) + ", PIN 2 = " + str(pin2))
+        # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+        # print("DIAMETER = " + str(circle[1]))
     elif (usePin1):
         current += 1
         circle = create_from_diameter(points[pin1], points[current])
-        print("NEW CIRCLE FROM DIAMETER, USING PIN 1: PIN 1 = " + str(pin1))
-        print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-        print("DIAMETER = " + str(circle[1]))
+        # print("NEW CIRCLE FROM DIAMETER, USING PIN 1: PIN 1 = " + str(pin1))
+        # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+        # print("DIAMETER = " + str(circle[1]))
     else:
         circle = create_from_diameter(points[current], points[current+1])
-        print("NEW CIRCLE FROM DIAMETER, USING NO PINS")
-        print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-        print("DIAMETER = " + str(circle[1]))
+        # print("NEW CIRCLE FROM DIAMETER, USING NO PINS")
+        # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+        # print("DIAMETER = " + str(circle[1]))
         current += 2
 
     while (current != end):
         if (not in_circle(circle, points[current])):
             if (usePin1 and usePin2):
                 circle = create_circumcircle(points[pin1], points[pin2], points[current])
-                print("NEW CIRCLE FROM CIRCUMCIRCLE, USING PIN 1 and 2: PIN 1 = " + str(pin1) + ", PIN 2 = " + str(pin2))
-                print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-                print("DIAMETER = " + str(circle[1]))
+                # print("NEW CIRCLE FROM CIRCUMCIRCLE, USING PIN 1 and 2: PIN 1 = " + str(pin1) + ", PIN 2 = " + str(pin2))
+                # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+                # print("DIAMETER = " + str(circle[1]))
             elif (usePin1):
                 circle = min_bounding_circle(points, begin, current, True, True, pin1, current)
-                print("NEW CIRCLE FROM RECURSION, USING PIN 1: PIN 1 = " + str(pin1))
-                print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-                print("DIAMETER = " + str(circle[1]))
+                # print("NEW CIRCLE FROM RECURSION, USING PIN 1: PIN 1 = " + str(pin1))
+                # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+                # print("DIAMETER = " + str(circle[1]))
             else:
                 circle = min_bounding_circle(points, begin, current, True, False, current, (0,0))
-                print("NEW CIRCLE FROM RECURSION, USING NO PINS")
-                print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
-                print("DIAMETER = " + str(circle[1]))
+                # print("NEW CIRCLE FROM RECURSION, USING NO PINS")
+                # print("CENTRE = (" + str(circle[0][0]) + ", " + str(circle[0][1]) + ")")
+                # print("DIAMETER = " + str(circle[1]))
         current += 1
     return circle
 
@@ -75,7 +75,7 @@ def calculate_bounding_circle(points):
     radius = 0
 
     shuffle(points) # slightly increases speed as if the points are ordered in such a way that they're radiating from the centre then its a worst case, shuffling it avoids this
-    print(points)
+    # print(points)
 
     circle = min_bounding_circle(points, 0, len(points)-1, False, False, (0,0), (0,0))
 
