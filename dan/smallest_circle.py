@@ -82,3 +82,10 @@ def calculate_bounding_circle(points):
     circle = min_bounding_circle(points, 0, len(points)-1, False, False, (0,0), (0,0))
 
     return circle
+
+def test_distances(points):
+    for index in range(0,len(points),1):
+        for subIndex in range(index + 1,len(points),1):
+            if (points[index][0] - points[subIndex][0])**2 + (points[index][1] - points[subIndex][1])**2 < 1:
+                return False
+    return True
